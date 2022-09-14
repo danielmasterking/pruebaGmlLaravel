@@ -42,6 +42,7 @@ class UsuarioController extends Controller
             'email.unique' => 'Este email ya esta registrado',
             'email.required' => 'Campo email es obligatorio',
             'cedula.unique' => 'Esta cedula ya esta registrada',
+            'celular.digits_between' => 'Celular debe tener 10 digitos',
         ];
 
 
@@ -52,12 +53,12 @@ class UsuarioController extends Controller
             'email' => 'required|unique:usuario|email|max:150',
             'cedula' => 'required|unique:usuario',
             'direccion' => 'required|max:180',
-            'celular' => 'required|digits_between:1,10|numeric',
+            'celular' => 'required|digits_between:10,10|numeric',
             'categoria_id' => 'required'
         ],$messages);
 
         if ($validator->fails()) {
-            
+
             return response([
                 "code"    => 500,
                 'errors' => $validator->errors()->all()

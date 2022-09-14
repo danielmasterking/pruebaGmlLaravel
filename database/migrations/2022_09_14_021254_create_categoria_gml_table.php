@@ -16,7 +16,7 @@ class CreateCategoriaGmlTable extends Migration
         Schema::create('categoria', function (Blueprint $table) {
             $table->id();
             //$table->timestamps();
-            $table->string('nombreCategoria');
+            $table->string('nombreCategoria',100);
         });
     }
 

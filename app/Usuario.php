@@ -10,5 +10,10 @@ class Usuario extends Model
     public $timestamps = false;
     protected $fillable = ['nombres','apellidos','pais','email','cedula','direccion','celular','categoria_id'];
 
-    
+
+    public function categorias()
+    {
+        return $this->hasMany(Categoria::class);
+    }
+
 }
