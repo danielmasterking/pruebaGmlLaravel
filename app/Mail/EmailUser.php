@@ -28,6 +28,13 @@ class EmailUser extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->from('dani.misena30@gmail.com')
+                    ->view('mail.usuario')
+                    //->text('mails.demo_plain')
+                    ->with(
+                      [
+                            'usuario' => 'daniel',
+                            'testVarTwo' => '2',
+                      ]);
     }
 }
