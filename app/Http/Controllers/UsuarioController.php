@@ -46,8 +46,11 @@ class UsuarioController extends Controller
         foreach($paisesJson['data'] as $pais){
             $paisesArray[] =  $pais['country'];
         }
-
-        return $paisesArray;
+        $resp = [
+            "code" => 200,
+            "data" =>$paisesArray
+        ];
+        return $resp;
     }
 
     public function getCategorias(){
