@@ -50,6 +50,10 @@ class UsuarioController extends Controller
         return $paisesArray;
     }
 
+    public function getCategorias(){
+        return Categoria::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -115,7 +119,8 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        return Usuario::with('categorias')->where("id", $id)->get();
+        $usuario = Usuario::with('categorias')->where("id", $id)->first();
+        return response()->json($usuario);
     }
 
     /**
