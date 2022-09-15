@@ -85,12 +85,10 @@ class UsuarioController extends Controller
         $validator = Validator::make($data, [
             'nombres' => 'required|min:5|max:100',
             'apellidos' => 'required|max:100',
-            'pais' => 'required',
             'email' => 'required|unique:usuario|email|max:150',
             'cedula' => 'required|unique:usuario',
             'direccion' => 'required|max:180',
-            'celular' => 'required|digits_between:10,10|numeric',
-            'categoria_id' => 'required'
+            'celular' => 'required|digits_between:10,10|numeric'
         ],$messages);
 
         if ($validator->fails()) {
@@ -155,8 +153,7 @@ class UsuarioController extends Controller
             'apellidos' => 'required|max:100',
             'pais' => 'required',
             'direccion' => 'required|max:180',
-            'celular' => 'required|digits_between:10,10|numeric',
-            'categoria_id' => 'required'
+            'celular' => 'required|digits_between:10,10|numeric'
         ],$messages);
 
         if ($validator->fails()) {
