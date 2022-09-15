@@ -103,7 +103,7 @@ class UsuarioController extends Controller
 
 
         Usuario::create($data);
-        //Mail::to("receiver@example.com")->send(new EmailUser());
+        //Mail::to($data['email'])->send(new EmailUser());
         return [
             "code" => 200,
             "mensaje" => "Creado exitosamente"
