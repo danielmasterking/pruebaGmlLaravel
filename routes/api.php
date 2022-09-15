@@ -22,4 +22,6 @@ Route::resource('cliente', 'ClienteController');
 
 Route::resource('usuario', 'UsuarioController');
 
-Route::get('/buscar/{buscar}', 'ClienteController@search');
+Route::get('/buscar/{buscar}', 'UsuarioController@search');
+
+Route::get('paisesList', 'UsuarioController@getPaises');

@@ -37,6 +37,19 @@ class UsuarioController extends Controller
         return $resp;
     }
 
+
+    public function getPaises(){
+        $response = Http::get('https://api.first.org/data/v1/countries?region=South America');
+        $paisesJson = $response->json();
+        $paisesArray = [];
+
+        foreach($paisesJson['data'] as $pais){
+            $paisesArray[] =  $pais['country'];
+        }
+
+        return $paisesArray;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -150,7 +163,7 @@ class UsuarioController extends Controller
         }
 
         Usuario::whereId($id)->update($data);
-       
+
         return [
             "code" => 200,
             "mensaje" => "Actualizado exitosamente"
@@ -171,5 +184,24 @@ class UsuarioController extends Controller
             "code" => 200,
             "mensaje" => "Eliminado exitosamente"
         ];
+    }
+
+    public function search($buscar=''){
+        if($buscar!= ''){
+            $users = Usuario::where('nombres', 'LIKE', "%$buscar%")
+            ->Orwhere('apellidos', 'LIKE', "%$buscar%")
+            ->Orwhere('cedula', 'LIKE', "%$buscar%")
+            ->Orwhere('pais', 'LIKE', "%$buscar%")
+            ->Orwhere('direccion', 'LIKE', "%$buscar%")
+            ->Orwhere('celular', 'LIKE', "%$buscar%")
+            ->Orwhere('id', 'LIKE', "%$buscar%")
+            ->with('categorias')
+            ->get();
+        }else{
+            $users = Usuario::with('categorias')->get();
+        }
+
+        //dd($users);
+        return $users;
     }
 }
