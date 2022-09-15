@@ -24,4 +24,4 @@ Route::get('/buscar/{buscar}', 'UsuarioController@search');
 
 Route::get('paisesList', 'UsuarioController@getPaises');
 
-Route::get('categoriasList', 'UsuarioController@getPaises');
+Route::get('categoriasList', 'UsuarioController@getCategorias');
